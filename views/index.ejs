@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		<%= title %>
+	</title>
+</head>
+<body>
+	<h1>留言板</h1>
+	<% if(!auth){ %>
+		<p>尚未登入，若需要留言請先登入</p>
+	<%}else{%>
+	<form action="/messageBoard" method="post">
+		<input type="text" name="content" placeholder="填寫留言訊息">
+		<input type="submit" valut="送出">
+	</form>		
+		<%}%>
+			<% if(!auth){ %>
+				<a href="/login">登入</a>			
+				<a href="/signup">註冊</a>
+			<%}else{%>
+				<a href="/user">個人頁面</a>
+			<%}%>
+		<ul>
+			<li>
+				姓名 : 留言內容
+			</li>
+		</ul>
+</body>
+
+</html>
