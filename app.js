@@ -36,17 +36,18 @@ var user = require('./routes/user');
 app.use('/', routes);
 app.use('/login', login);
 app.use('/signup', signup);
-app.use('/messageBoard', messageBoard);
 
 // Check login (Middleware)
-/*
 app.use((req,res,next)=>{
   if(req.session.uid){
-    return next();
+    next();
   }
   res.redirect('/');
 })
-*/
+
+app.use('/user', user);
+app.use('/messageBoard', messageBoard);
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   res.status(404).render('../views/404')
@@ -55,12 +56,13 @@ app.use((req, res, next) => {
   err.status = 404;
   next(err);
   */
+ next();
 });
-app.use('/user', user);
 
 // error handlers
 // development error handler
 // will print stacktrace
+
 if (app.get('env') === 'development') {
   app.use((err, req, res, next) => {
     res.status(err.status || 500);

@@ -13,7 +13,9 @@
 	<form action="/messageBoard" method="post">
 		<input type="text" name="content" placeholder="填寫留言訊息">
 		<input type="submit" valut="送出">
+		<%= Errors %>
 	</form>		
+	
 		<%}%>
 			<% if(!auth){ %>
 				<a href="/login">登入</a>			
@@ -22,9 +24,11 @@
 				<a href="/user">個人頁面</a>
 			<%}%>
 		<ul>
+				<% for(itme in list){%>
 			<li>
-				姓名 : 留言內容
+					<%= list[itme].nickname %> : <%= list[itme].content %>
 			</li>
+				<%}%>
 		</ul>
 </body>
 
